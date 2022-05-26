@@ -7,6 +7,7 @@ const forecast = (longitude, latitude, callback) => {
     "," +
     longitude +
     "&units=f";
+
   request({ url, json: true }, (error, { body }) => {
     if (error) {
       callback("Unable to connnect weather service", undefined);
@@ -20,11 +21,11 @@ const forecast = (longitude, latitude, callback) => {
         forecast:
           body.current.weather_descriptions[0] +
           " It is currently " +
-          body.current.temperature +
-          " degrees out." +
+          body.current.humidity +
+          " % out." +
           " There is a " +
-          body.current.precip +
-          "% chance of rain.",
+          body.current.feelslike +
+          "% distance.",
       });
     }
   });
